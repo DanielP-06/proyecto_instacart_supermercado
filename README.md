@@ -3,10 +3,19 @@ Análisis de Instacart: ¿Qué, Cuándo y Por Qué Compran los Clientes?
 
 (El CSV de Order_products esta en mi drive como comprimido. Link para descarga https://drive.google.com/file/d/1_tAqlgmkSSdAFJCuUd45HP8jFByaSV75/view?usp=sharing )
 
-Aqui tnemos un análisis exploratorio de datos (EDA) realizado sobre un conjunto de datos del negocio Instacart, una plataforma de entrega de comestibles. El objetivo principal en este caso es comprender los patrones de compra de los clientes y las características de los productos y pedidos para extraer insights valiosos para el negocio.
-
+Aqui tnemos un análisis exploratorio de datos (EDA) realizado sobre un conjunto de datos del negocio Instacart, una plataforma de entrega de comestibles.
 El conjunto de datos original fue modificado para incluir valores ausentes y duplicados, simulando escenarios comunes en datos del mundo real, lo que permitió un ejercicio práctico de preprocesamiento de datos.
 
+## EL problema
+Comprender el comportamiento de compra de los clientes en una plataforma de comestibles (tipo Instacart) para responder preguntas clave del negocio:
+
+¿Qué productos son los más demandados y cuáles se re-ordenan con más frecuencia?
+
+¿Cuándo compran los clientes (hora/día) y cómo afecta eso al tamaño del carrito?
+
+¿Qué productos suelen agregarse primero al carrito (impulsos / básicos)?
+
+El objetivo es extraer insights accionables que sirvan para merchandising, promociones y optimización de inventario.
 **Objetivos del Proyecto:**
 
 *   Cargar y comprender la estructura de múltiples tablas de datos relacionadas.
