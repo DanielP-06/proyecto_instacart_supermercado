@@ -4,7 +4,6 @@ Análisis de Instacart: ¿Qué, Cuándo y Por Qué Compran los Clientes?
 (El CSV de Order_products esta en mi drive como comprimido. Link para descarga https://drive.google.com/file/d/1_tAqlgmkSSdAFJCuUd45HP8jFByaSV75/view?usp=sharing )
 
 Aqui tnemos un análisis exploratorio de datos (EDA) realizado sobre un conjunto de datos del negocio Instacart, una plataforma de entrega de comestibles.
-El conjunto de datos original fue modificado para incluir valores ausentes y duplicados, simulando escenarios comunes en datos del mundo real, lo que permitió un ejercicio práctico de preprocesamiento de datos.
 
 ## EL problema
 Comprender el comportamiento de compra de los clientes en una plataforma de comestibles (tipo Instacart) para responder preguntas clave del negocio:
@@ -16,6 +15,7 @@ Comprender el comportamiento de compra de los clientes en una plataforma de come
 ¿Qué productos suelen agregarse primero al carrito (impulsos / básicos)?
 
 El objetivo es extraer insights accionables que sirvan para merchandising, promociones y optimización de inventario.
+
 **Objetivos del Proyecto:**
 
 *   Cargar y comprender la estructura de múltiples tablas de datos relacionadas.
@@ -25,13 +25,61 @@ El objetivo es extraer insights accionables que sirvan para merchandising, promo
 *   Identificar los productos más populares y aquellos con alta tasa de re-ordenamiento.
 *   Descubrir qué productos suelen ser los primeros en agregarse al carrito.
 
+## Datos
+Dataset base: tablas típicas de Instacart (orders, products, order_products, aisles, departments, users/customers en su versión adaptada).
+
+Archivo comprimido del CSV order_products (descarga):
+https://drive.google.com/file/d/1_tAqlgmkSSdAFJCuUd45HP8jFByaSV75/view?usp=sharing
+
+Nota: Los datos fueron intencionalmente modificados para incluir valores faltantes y duplicados (simulación de escenarios reales) — esto permite practicar limpieza y robustez del pipeline.
+
+Columnas relevantes usadas (ejemplos): order_id, user_id, product_id, add_to_cart_order, reordered, order_dow, order_hour_of_day, order_number, product_name, aisle_id, department_id, order_time
+
 **Tecnologías y Bibliotecas Utilizadas:**
 
 *   Python
 *   Pandas 
 *   Matplotlib 
 
-**Hallazgos Clave (Resumen):**
+## Metodo
+Método
+
+Carga de tablas
+
+Lectura de CSVs con pandas (posible uso de chunks si el archivo es grande).
+
+Preprocesamiento / ETL
+
+Descompresión y colocación de archivos en data/.
+
+Normalización de nombres, conversión de fechas, tipos y renombrado de columnas.
+
+Detección y tratamiento de duplicados y valores ausentes (imputación o eliminación según caso).
+
+Filtrado de outliers básicos en métricas numéricas (si aplica).
+
+Feature engineering
+
+Calcular order_age / order_number por cliente, is_repeat por producto, proporción reorder_rate por producto.
+
+Crear variables temporales (hour_of_day, day_of_week, is_weekend).
+
+Calcular first_add_rate = % veces que un producto aparece con add_to_cart_order == 1.
+
+Análisis exploratorio (EDA)
+
+Distribuciones de pedidos por día y hora.
+
+Tamaño de carrito (items por pedido) y distribución por cliente.
+
+Top-N productos por volumen y por tasa de reorden.
+
+Segmentación de clientes por frecuencia (ocasional / recurrente / top-buyers).
+
+Visualización
+
+
+**KPIs:**
 
 *   Se identificaron patrones claros en las horas y días de mayor actividad de pedidos por ejemplo, picos los domingos y lunes, y durante ciertas horas del día.
 *   Vimos que la distribución del número de pedidos por cliente muestra una mezcla de compradores ocasionales y un núcleo de clientes más frecuentes.
